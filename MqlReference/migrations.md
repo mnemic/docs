@@ -71,7 +71,7 @@ A present `[Mnemic].[Migrations]` row must contain a non-blank, exactly framed U
 
 MERGE and SCRIPT assemble output incrementally and refuse a result above `EngineOptions.MaxDocumentBytes` before allocating an oversized history/script string. MERGE's potentially large set of history-row ids is bounded by `MaxInMemoryStreamingState`, admission-accounted, and spills to authenticated temporary storage. The size failure publishes neither a partial history group nor any catalog rewrite.
 
-Migration-history rows use exactly `MQLH1` with NUL-delimited framing. The header is `MQLH1\0`, followed by the transaction-group count and, for each group, its statement count and statement frames. Unframed, newline-delimited, count-free, truncated, or alternate grouped encodings are rejected. A history row of any other shape is refused ([compatibility](https://mnemic.io/docs/compatibility/)).
+Migration-history rows use exactly `MQLH1` with NUL-delimited framing. The header is `MQLH1\0`, followed by the transaction-group count and, for each group, its statement count and statement frames. Unframed, newline-delimited, count-free, truncated, or alternate grouped encodings are rejected. A history row of any other shape is refused ([compatibility](../compatibility.md)).
 
 ## Concurrent migrations
 
