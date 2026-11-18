@@ -1320,7 +1320,7 @@ Look at:
 - **`Notes`** — also surfaces missing-index suggestions (`WHERE [X] has no index; CREATE INDEX ...`) and the cost-based ranking summary.
 - **`EstimatedRows`** — `null` wherever no evidence defends a number: statistics-dependent strategies without fresh statistics, and full or ordered scans that apply a predicate no statistic estimates or read a temporal collection. An unfiltered scan of a standard collection reports its document count, point PK / temporal seeks report `1` (`PK IS NULL` reports `0`), and `BitmapOr` sums value-aware input estimates, discounts proven repeated cached probes, and caps them at collection cardinality. `LIMIT N` caps a known value; the row shows the expected output count, not the input scan count.
 - **`StreamingMode`** — `Buffered` means the final result was exposed as a materialised row list; inspect the child stages and spill fields to identify the blocking operator. `Streaming` means the result was drained from `RowsAsync`; `n/a` is used for non-row statements.
-- **`SpilledBytes > 0`** — the memory cap (`EngineOptions.MaxInMemoryStreamingState`) was hit; either raise the host's cap (the [standalone server](https://mnemic.io/docs/configuration/#standalone-server-environment) keeps the default) or add an index to shrink the working set.
+- **`SpilledBytes > 0`** — the memory cap (`EngineOptions.MaxInMemoryStreamingState`) was hit; either raise the host's cap (the [standalone server](../configuration.md#standalone-server-environment) keeps the default) or add an index to shrink the working set.
 
 <a id="example-18-subscribe-to-changes"></a>
 
